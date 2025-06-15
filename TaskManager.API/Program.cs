@@ -4,7 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using TaskManager.Application;
+using TaskManager.Application.Common.Interfaces;
 using TaskManager.Infrastructure;
+using TaskManager.Infrastructure.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,11 @@ builder.Services.AddSwaggerGen(c =>
 // Infrastructure services
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
+
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+
 
 // JWT Authentication config (placeholder)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

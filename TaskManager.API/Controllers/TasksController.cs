@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MediatR;
 using TaskManager.Application.Tasks.Commands;
 using TaskManager.Application.Tasks.Queries;
@@ -7,7 +8,7 @@ namespace TaskManager.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-
+    [Authorize(Roles = "Senior, Junior, Manager")]
     public class TasksController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -17,6 +18,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Senior")]
         public async Task<IActionResult> Create([FromBody] CreateTaskCommand command, CancellationToken cancellationToken)
         {
             if (command == null)

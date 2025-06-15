@@ -14,5 +14,7 @@ namespace TaskManager.Domain.Entities
         public Guid? ManagerId { get; set; } // Nullable to allow users not assigned to a team
         public User? Manager { get; set; }
         public ICollection<User>? Juniors { get; set; }
+        public ICollection<TaskItem>? CreatedTasks { get; set; }
+        public ICollection<TaskItem>? AssignedTasks { get; set; }
     }
 }

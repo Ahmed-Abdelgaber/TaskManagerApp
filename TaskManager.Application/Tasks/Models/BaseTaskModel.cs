@@ -1,3 +1,5 @@
+using TaskManager.Domain.Enums;
+
 namespace TaskManager.Application.Tasks.Models
 {
     public abstract class BaseTaskModel
@@ -8,5 +10,8 @@ namespace TaskManager.Application.Tasks.Models
         public DateTime? DueDate { get; set; }
         public bool IsCompleted { get; set; }
         public bool IsDeleted { get; set; }
+        public Guid AssignedToUserId { get; set; }
+        public Guid CreatedByUserId { get; set; }
+        public TaskState Status { get; set; }
     }
 }

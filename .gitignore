@@ -76,3 +76,5 @@ taskmanager.db
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
+
+.gitignore
